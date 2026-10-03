@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffd6df">
+<title>For My Dearest Rutu ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Playfair+Display:ital,wght@0,600;1,400&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rose:#ff5e7e; --rose-d:#e04867; --deep:#c2185b; --ink:#4a3239;
+    --paper:#fffaf3; --paper-2:#fdf1e3;
+    --safe-b:env(safe-area-inset-bottom,0px); --safe-t:env(safe-area-inset-top,0px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{min-height:100%}
+  body{
+    min-height:100vh; min-height:100dvh;
+    font-family:'Poppins',system-ui,sans-serif; color:var(--ink);
+    background:
+      radial-gradient(circle at 15% 10%, #fff 0, transparent 40%),
+      radial-gradient(circle at 85% 90%, #ffc2d1 0, transparent 45%),
+      linear-gradient(160deg,#ffeef2,#ffd9e2 55%,#ffc7d6);
+    background-attachment:fixed;
+    display:flex; justify-content:center; align-items:flex-start;
+    padding:calc(18px + var(--safe-t)) 14px calc(28px + var(--safe-b));
+    overflow-x:hidden;
+  }
+  #fx{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+  .bg-heart{position:absolute;bottom:-40px;opacity:0;user-select:none;animation:floatUp linear infinite;will-change:transform,opacity}
+  @keyframes floatUp{
+    0%{transform:translate3d(0,0,0) rotate(0) scale(.8);opacity:0}
+    15%{opacity:.7}
+    100%{transform:translate3d(var(--dx,20px),-110vh,0) rotate(var(--rot,200deg)) scale(1.2);opacity:0}
+  }
+ 
+  main{position:relative;z-index:5;width:100%;max-width:460px}
+ 
+  /* ---------- Envelope intro ---------- */
+  #intro{
+    position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:22px;padding:20px;
+    background:linear-gradient(160deg,#ffeef2,#ffd0dc);
+    transition:opacity .8s ease, visibility .8s;
+  }
+  #intro.gone{opacity:0;visibility:hidden;pointer-events:none}
+  .hint{font-family:'Caveat',cursive;font-size:1.6rem;color:var(--deep);animation:bob 1.6s ease-in-out infinite}
+  @keyframes bob{50%{transform:translateY(-6px)}}
+  .envelope{position:relative;width:min(78vw,300px);aspect-ratio:3/2;cursor:pointer;filter:drop-shadow(0 18px 24px rgba(194,24,91,.25));transition:transform .4s}
+  .envelope:active{transform:scale(.97)}
+  .env-back{position:absolute;inset:0;background:#f7a8bb;border-radius:8px}
+  .env-letter{position:absolute;left:8%;right:8%;top:8%;bottom:8%;background:var(--paper);border-radius:6px;transition:transform .7s .25s ease;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+  .env-front{position:absolute;inset:0;border-radius:8px;
+    background:
+      linear-gradient(to top right,transparent 49.5%,#ff8fa9 50%) left/50.2% 100% no-repeat,
+      linear-gradient(to top left,transparent 49.5%,#ff8fa9 50%) right/50.2% 100% no-repeat;
+    clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);
+    background-color:#ff9db3}
+  .env-flap{position:absolute;left:0;right:0;top:0;height:58%;background:linear-gradient(#ff7f9d,#ff6f92);
+    clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .6s ease, z-index .6s;z-index:3;border-radius:8px 8px 0 0}
+  .seal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;font-size:2rem;
+    width:52px;height:52px;border-radius:50%;display:grid;place-items:center;
+    background:radial-gradient(circle at 35% 30%,#ff5a7a,#b3123c);box-shadow:0 4px 10px rgba(0,0,0,.3);animation:beat 1.4s infinite;transition:opacity .3s}
+  @keyframes beat{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.12)}}
+  .envelope.open .env-flap{transform:rotateX(180deg);z-index:1}
+  .envelope.open .env-letter{transform:translateY(-55%)}
+  .envelope.open .seal{opacity:0}
+ 
+  /* ---------- Main card ---------- */
+  .card{
+    opacity:0;transform:translateY(24px);transition:opacity .9s ease, transform .9s ease;
+    background:rgba(255,255,255,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,.8);border-radius:28px;padding:26px 18px 22px;
+    box-shadow:0 20px 50px rgba(194,24,91,.18);text-align:center;
+  }
+  .card.show{opacity:1;transform:none}
+  .top-heart{font-size:2.8rem;display:inline-block;animation:beat2 1.6s infinite}
+  @keyframes beat2{0%,100%{transform:scale(1)}15%{transform:scale(1.18)}30%{transform:scale(1)}45%{transform:scale(1.12)}}
+  h1{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,7vw,2.1rem);color:var(--deep);margin:4px 0 6px;line-height:1.2}
+  .sub{font-family:'Caveat',cursive;font-size:1.35rem;color:#8a6670;margin-bottom:20px}
+ 
+  /* Paper letter */
+  .letter{
+    position:relative;text-align:left;padding:24px 20px 22px 26px;margin-bottom:24px;border-radius:6px;
+    background:
+      repeating-linear-gradient(transparent 0 33px, rgba(120,150,200,.18) 33px 34px),
+      linear-gradient(var(--paper),var(--paper-2));
+    box-shadow:0 1px 1px rgba(0,0,0,.05),0 10px 22px rgba(120,70,60,.14),0 0 0 1px rgba(140,100,80,.06);
+    transform:rotate(-.6deg);
+    font-family:'Caveat',cursive;font-size:1.42rem;line-height:34px;color:#3b2a30;
+  }
+  .letter::before{content:"";position:absolute;left:12px;top:0;bottom:0;width:1px;background:rgba(255,94,126,.35)}
+  .letter::after{content:"";position:absolute;top:-9px;left:50%;width:70px;height:20px;transform:translateX(-50%) rotate(-2deg);
+    background:rgba(255,214,225,.8);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+  .letter p{margin-bottom:34px;opacity:0;transform:translateY(8px);transition:opacity .8s, transform .8s}
+  .letter p:last-of-type{margin-bottom:0}
+  .letter.read p{opacity:1;transform:none}
+  .letter.read p:nth-child(2){transition-delay:.5s}
+  .letter.read p:nth-child(3){transition-delay:1.3s}
+  .letter.read p:nth-child(4){transition-delay:2.1s}
+  .letter.read p:nth-child(5){transition-delay:2.9s}
+  .sign{text-align:right;font-weight:700;color:var(--deep)}
+ 
+  /* Reasons */
+  .sec-title{font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:var(--deep);margin-bottom:12px}
+  .reason{
+    min-height:78px;display:flex;align-items:center;justify-content:center;
+    padding:14px 16px;margin-bottom:14px;border-radius:16px;font-size:.95rem;line-height:1.5;
+    background:rgba(255,255,255,.8);border:1.5px dashed rgba(255,94,126,.55);transition:opacity .25s, transform .25s;
+  }
+  .reason.swap{opacity:0;transform:scale(.96)}
+  .counter{font-size:.75rem;color:#9a7a84;margin-top:8px}
+ 
+  .btn{
+    font:600 1rem 'Poppins',sans-serif;color:#fff;border:0;cursor:pointer;
+    padding:14px 26px;border-radius:999px;min-height:48px;touch-action:manipulation;
+    background:linear-gradient(135deg,#ff7a97,var(--rose-d));
+    box-shadow:0 8px 20px rgba(255,94,126,.38), inset 0 1px 0 rgba(255,255,255,.35);
+    transition:transform .15s, box-shadow .2s;
+  }
+  .btn:active{transform:scale(.95)}
+  .btn.soft{background:#fff;color:var(--deep);box-shadow:0 6px 16px rgba(194,24,91,.15), inset 0 0 0 1.5px rgba(255,94,126,.4)}
+ 
+  .forgive{margin-top:28px;padding-top:22px;border-top:1px solid rgba(255,94,126,.25)}
+  .ask{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--ink);margin-bottom:6px}
+  .ask-sub{font-size:.85rem;color:#8a6670;margin-bottom:20px}
+  .choices{display:flex;flex-direction:column;align-items:center;gap:14px;min-height:130px;position:relative}
+  #yesBtn{transition:transform .35s cubic-bezier(.3,1.6,.5,1);width:min(100%,280px)}
+  #noBtn{
+    background:linear-gradient(135deg,#b9a9ae,#948388);box-shadow:0 6px 14px rgba(0,0,0,.15);
+    width:min(100%,280px);white-space:nowrap;
+  }
+  #noBtn.run{position:fixed;z-index:30;width:auto;transition:left .28s cubic-bezier(.3,1.4,.5,1), top .28s cubic-bezier(.3,1.4,.5,1), transform .2s}
+  #noSlot{display:none;height:48px;width:min(100%,280px)}
+  .toast{min-height:22px;margin-top:14px;font-family:'Caveat',cursive;font-size:1.35rem;color:var(--deep)}
+ 
+  /* Celebration */
+  #win{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:20px;
+    background:rgba(60,10,30,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  #win.on{display:flex}
+  .win-card{background:#fff;border-radius:26px;padding:30px 22px;text-align:center;max-width:380px;width:100%;
+    box-shadow:0 30px 60px rgba(0,0,0,.35);animation:pop .55s cubic-bezier(.2,1.5,.4,1)}
+  @keyframes pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+  .win-card .big{font-size:3.2rem;margin-bottom:6px}
+  .win-card h2{font-family:'Playfair Display',serif;color:var(--deep);font-size:1.7rem;margin-bottom:10px}
+  .win-card p{font-size:.98rem;line-height:1.6;color:#5a4650;margin-bottom:22px}
+  #confetti{position:fixed;inset:0;z-index:70;pointer-events:none}
+ 
+  @media (min-width:600px){
+    body{align-items:center;padding:30px}
+    .card{padding:38px 32px 30px}
+    .letter{font-size:1.55rem}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+ 
+<div id="fx"></div>
+<canvas id="confetti"></canvas>
+ 
+<!-- Envelope intro -->
+<div id="intro">
+  <div class="hint">Rutu, this is for you… 💌</div>
+  <div class="envelope" id="env" role="button" aria-label="Open the letter">
+    <div class="env-back"></div>
+    <div class="env-letter"></div>
+    <div class="env-front"></div>
+    <div class="env-flap"></div>
+    <div class="seal">❤️</div>
+  </div>
+  <div style="font-size:.85rem;color:#a0566d">tap the envelope</div>
+</div>
+ 
+<main>
+  <section class="card" id="card">
+    <div class="top-heart">💖</div>
+    <h1>Hey Cutie Rutu…</h1>
+    <p class="sub">a little corner of the internet, just to say sorry</p>
+ 
+    <div class="letter" id="letter">
+      <p><strong>My Dearest Rutu,</strong></p>
+      <p>I hate that I’m the reason behind your upset mood today. Seeing you bothered breaks my heart, especially knowing I caused it.</p>
+      <p>You mean the world to me, and the last thing I ever want is to hurt your feelings or take your beautiful smile away. I was wrong, and I own my mistake completely.</p>
+      <p>Thank you for being so patient with me, even when I drop the ball. I love you endlessly.</p>
+      <p class="sign">Yours always, ❤️</p>
+    </div>
+ 
+    <div>
+      <div class="sec-title">Need a gentle reminder? 🌸</div>
+      <div class="reason" id="reason">Tap the button to see why you’re so special to me.</div>
+      <button class="btn soft" id="reasonBtn">Tap for a reason ✨</button>
+      <div class="counter" id="counter"></div>
+    </div>
+ 
+    <div class="forgive">
+      <div class="ask">Can we make up and reset, my love? 🥺</div>
+      <div class="ask-sub">choose wisely… 😌</div>
+      <div class="choices">
+        <button class="btn" id="yesBtn">Yes, I forgive you ❤️</button>
+        <div id="noSlot"></div>
+        <button class="btn" id="noBtn">Nope, abhi bhi gussa hu 😤</button>
+      </div>
+      <div class="toast" id="toast"></div>
+    </div>
+  </section>
+</main>
+ 
+<!-- Win -->
+<div id="win">
+  <div class="win-card">
+    <div class="big">🎉🥰✨</div>
+    <h2>Thank you, my Rutu!</h2>
+    <p>You have no idea how much this means to me. I promise to handle your heart with extra care, and make it up to you today. 🫶</p>
+    <button class="btn" id="closeBtn">Close &amp; hug me 🫂</button>
+  </div>
+</div>
+ 
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+ 
+  /* ---- floating background hearts ---- */
+  const fx = $('fx'), sym = ['❤️','💖','🌸','💕','✨','💗'];
+  const count = innerWidth < 600 ? 16 : 26;
+  for (let i = 0; i < count; i++) {
+    const h = document.createElement('div');
+    h.className = 'bg-heart';
+    h.textContent = sym[Math.random()*sym.length|0];
+    h.style.left = Math.random()*100 + 'vw';
+    h.style.fontSize = (Math.random()*16 + 14) + 'px';
+    h.style.animationDuration = (Math.random()*6 + 8) + 's';
+    h.style.animationDelay = (Math.random()*8) + 's';
+    h.style.setProperty('--dx', (Math.random()*80 - 40) + 'px');
+    h.style.setProperty('--rot', (Math.random()*360 - 180) + 'deg');
+    fx.appendChild(h);
+  }
+ 
+  /* ---- envelope intro ---- */
+  const env = $('env'), intro = $('intro'), card = $('card'), letter = $('letter');
+  let opened = false;
+  env.addEventListener('click', () => {
+    if (opened) return; opened = true;
+    env.classList.add('open');
+    if (navigator.vibrate) navigator.vibrate(20);
+    setTimeout(() => {
+      intro.classList.add('gone');
+      card.classList.add('show');
+      setTimeout(() => letter.classList.add('read'), 500);
+    }, 1100);
+  });
+ 
+  /* ---- reasons ---- */
+  const reasons = [
+    "Your smile literally lights up my darkest days.",
+    "You have the kindest, sweetest heart I’ve ever known.",
+    "Even when you’re upset, you look impossibly cute.",
+    "My life is so much happier and brighter with you in it.",
+    "I love how we can share anything with each other.",
+    "You make me want to be a better person every single day.",
+    "You’re my favourite person to talk to, always. 💞"
+  ];
+  let ri = 0, rbox = $('reason');
+  $('reasonBtn').addEventListener('click', () => {
+    rbox.classList.add('swap');
+    setTimeout(() => {
+      rbox.textContent = reasons[ri];
+      rbox.classList.remove('swap');
+      $('counter').textContent = (ri+1) + ' of ' + reasons.length;
+      ri = (ri + 1) % reasons.length;
+    }, 220);
+  });
+ 
+  /* ---- the runaway "Nope" button ---- */
+  const no = $('noBtn'), yes = $('yesBtn'), slot = $('noSlot'), toast = $('toast');
+  const labels = [
+    "Nope, abhi bhi gussa hu 😤",
+    "Pakad ke dikha 😝",
+    "Arre! Itna aasaan nahi 🙈",
+    "Hehe miss! 😜",
+    "Thoda aur gussa hu 😤",
+    "Okay okay… almost 🥺",
+    "Button thak gaya 😮‍💨",
+    "Bas karo na 🥹"
+  ];
+  const toasts = [
+    "", "Aww, you can’t catch it 😆", "The Yes button is getting bigger 👀",
+    "Rutu, just press Yes na 🥺", "Even the button wants you to forgive me 😭",
+    "I’ll give you chocolates 🍫", "Okay now you’re just playing 😂"
+  ];
+  let dodges = 0, running = false;
+ 
+  function dodge(e) {
+    if (e) { e.preventDefault(); }
+    if (!running) {
+      running = true;
+      const r = no.getBoundingClientRect();
+      slot.style.display = 'block';           // keep layout from collapsing
+      no.classList.add('run');
+      no.style.left = r.left + 'px';
+      no.style.top = r.top + 'px';
+    }
+    dodges++;
+    no.textContent = labels[dodges % labels.length];
+    toast.textContent = toasts[Math.min(dodges, toasts.length) % toasts.length];
+ 
+    // make "Yes" bigger every time (capped)
+    const s = Math.min(1 + dodges * 0.06, 1.35);
+    yes.style.transform = 'scale(' + s + ')';
+    if (navigator.vibrate) navigator.vibrate(12);
+ 
+    // pick a new spot that is inside the screen and away from the current one
+    const pad = 12, bw = no.offsetWidth, bh = no.offsetHeight;
+    const maxX = innerWidth - bw - pad, maxY = innerHeight - bh - pad - 8;
+    const cur = no.getBoundingClientRect();
+    let x, y, tries = 0;
+    do {
+      x = pad + Math.random() * Math.max(0, maxX - pad);
+      y = pad + Math.random() * Math.max(0, maxY - pad);
+      tries++;
+    } while (tries < 12 && Math.hypot(x - cur.left, y - cur.top) < 110);
+    no.style.left = x + 'px';
+    no.style.top = y + 'px';
+    no.style.transform = 'rotate(' + (Math.random()*16 - 8) + 'deg)';
+  }
+  // pointerenter = desktop hover, pointerdown/touchstart = finger on mobile
+  no.addEventListener('pointerenter', dodge);
+  no.addEventListener('touchstart', dodge, { passive: false });
+  no.addEventListener('click', dodge);
+  addEventListener('resize', () => {
+    if (!running) return;
+    const r = no.getBoundingClientRect();
+    no.style.left = Math.min(r.left, innerWidth - r.width - 12) + 'px';
+    no.style.top = Math.min(r.top, innerHeight - r.height - 12) + 'px';
+  });
+ 
+  /* ---- yes -> celebration + confetti ---- */
+  yes.addEventListener('click', () => {
+    $('win').classList.add('on');
+    if (navigator.vibrate) navigator.vibrate([40, 40, 80]);
+    confetti();
+  });
+  $('closeBtn').addEventListener('click', () => $('win').classList.remove('on'));
+ 
+  function confetti() {
+    const cv = $('confetti'), ctx = cv.getContext('2d');
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    cv.width = innerWidth * dpr; cv.height = innerHeight * dpr;
+    ctx.scale(dpr, dpr);
+    const colors = ['#ff5e7e','#ffb3c6','#ffd166','#fff','#c2185b','#ff9a9e'];
+    const bits = Array.from({ length: 140 }, () => ({
+      x: innerWidth / 2, y: innerHeight * 0.45,
+      vx: (Math.random() - .5) * 14, vy: Math.random() * -14 - 3,
+      s: Math.random() * 8 + 5, r: Math.random() * 6.28, vr: (Math.random() - .5) * .4,
+      c: colors[Math.random()*colors.length|0], heart: Math.random() < .35
+    }));
+    let t = 0;
+    (function frame() {
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      bits.forEach(b => {
+        b.vy += .35; b.x += b.vx; b.y += b.vy; b.r += b.vr; b.vx *= .99;
+        ctx.save(); ctx.translate(b.x, b.y); ctx.rotate(b.r); ctx.fillStyle = b.c;
+        if (b.heart) { ctx.font = b.s * 2 + 'px serif'; ctx.fillText('❤', -b.s, b.s); }
+        else ctx.fillRect(-b.s/2, -b.s/4, b.s, b.s/2);
+        ctx.restore();
+      });
+      if (++t < 190) requestAnimationFrame(frame);
+      else ctx.clearRect(0, 0, innerWidth, innerHeight);
+    })();
+  }
+})();
+</script>
+</body>
+</html>
