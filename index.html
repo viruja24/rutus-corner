@@ -35,9 +35,9 @@
     15%{opacity:.7}
     100%{transform:translate3d(var(--dx,20px),-110vh,0) rotate(var(--rot,200deg)) scale(1.2);opacity:0}
   }
- 
+
   main{position:relative;z-index:5;width:100%;max-width:460px}
- 
+
   /* ---------- Envelope intro ---------- */
   #intro{
     position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;
@@ -67,7 +67,7 @@
   .envelope.open .env-flap{transform:rotateX(180deg);z-index:1}
   .envelope.open .env-letter{transform:translateY(-55%)}
   .envelope.open .seal{opacity:0}
- 
+
   /* ---------- Main card ---------- */
   .card{
     opacity:0;transform:translateY(24px);transition:opacity .9s ease, transform .9s ease;
@@ -80,7 +80,7 @@
   @keyframes beat2{0%,100%{transform:scale(1)}15%{transform:scale(1.18)}30%{transform:scale(1)}45%{transform:scale(1.12)}}
   h1{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,7vw,2.1rem);color:var(--deep);margin:4px 0 6px;line-height:1.2}
   .sub{font-family:'Caveat',cursive;font-size:1.35rem;color:#8a6670;margin-bottom:20px}
- 
+
   /* Paper letter */
   .letter{
     position:relative;text-align:left;padding:24px 20px 22px 26px;margin-bottom:24px;border-radius:6px;
@@ -102,7 +102,7 @@
   .letter.read p:nth-child(4){transition-delay:2.1s}
   .letter.read p:nth-child(5){transition-delay:2.9s}
   .sign{text-align:right;font-weight:700;color:var(--deep)}
- 
+
   /* Reasons */
   .sec-title{font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:var(--deep);margin-bottom:12px}
   .reason{
@@ -112,7 +112,7 @@
   }
   .reason.swap{opacity:0;transform:scale(.96)}
   .counter{font-size:.75rem;color:#9a7a84;margin-top:8px}
- 
+
   .btn{
     font:600 1rem 'Poppins',sans-serif;color:#fff;border:0;cursor:pointer;
     padding:14px 26px;border-radius:999px;min-height:48px;touch-action:manipulation;
@@ -122,7 +122,7 @@
   }
   .btn:active{transform:scale(.95)}
   .btn.soft{background:#fff;color:var(--deep);box-shadow:0 6px 16px rgba(194,24,91,.15), inset 0 0 0 1.5px rgba(255,94,126,.4)}
- 
+
   .forgive{margin-top:28px;padding-top:22px;border-top:1px solid rgba(255,94,126,.25)}
   .ask{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--ink);margin-bottom:6px}
   .ask-sub{font-size:.85rem;color:#8a6670;margin-bottom:20px}
@@ -132,10 +132,10 @@
     background:linear-gradient(135deg,#b9a9ae,#948388);box-shadow:0 6px 14px rgba(0,0,0,.15);
     width:min(100%,280px);white-space:nowrap;
   }
-  #noBtn.run{position:fixed;z-index:30;width:auto;transition:left .28s cubic-bezier(.3,1.4,.5,1), top .28s cubic-bezier(.3,1.4,.5,1), transform .2s}
+  #noBtn.run{position:fixed;z-index:30;width:auto;max-width:calc(100vw - 24px);white-space:normal;line-height:1.25;padding:12px 20px;transition:left .6s cubic-bezier(.25,.8,.25,1), top .6s cubic-bezier(.25,.8,.25,1), transform .3s}
   #noSlot{display:none;height:48px;width:min(100%,280px)}
   .toast{min-height:22px;margin-top:14px;font-family:'Caveat',cursive;font-size:1.35rem;color:var(--deep)}
- 
+
   /* Celebration */
   #win{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:20px;
     background:rgba(60,10,30,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
@@ -147,7 +147,7 @@
   .win-card h2{font-family:'Playfair Display',serif;color:var(--deep);font-size:1.7rem;margin-bottom:10px}
   .win-card p{font-size:.98rem;line-height:1.6;color:#5a4650;margin-bottom:22px}
   #confetti{position:fixed;inset:0;z-index:70;pointer-events:none}
- 
+
   @media (min-width:600px){
     body{align-items:center;padding:30px}
     .card{padding:38px 32px 30px}
@@ -157,10 +157,10 @@
 </style>
 </head>
 <body>
- 
+
 <div id="fx"></div>
 <canvas id="confetti"></canvas>
- 
+
 <!-- Envelope intro -->
 <div id="intro">
   <div class="hint">Rutu, this is for you… 💌</div>
@@ -173,13 +173,13 @@
   </div>
   <div style="font-size:.85rem;color:#a0566d">tap the envelope</div>
 </div>
- 
+
 <main>
   <section class="card" id="card">
     <div class="top-heart">💖</div>
     <h1>Hey Cutie Rutu…</h1>
     <p class="sub">a little corner of the internet, just to say sorry</p>
- 
+
     <div class="letter" id="letter">
       <p><strong>My Dearest Rutu,</strong></p>
       <p>I hate that I’m the reason behind your upset mood today. Seeing you bothered breaks my heart, especially knowing I caused it.</p>
@@ -187,14 +187,14 @@
       <p>Thank you for being so patient with me, even when I drop the ball. I love you endlessly.</p>
       <p class="sign">Yours always, ❤️</p>
     </div>
- 
+
     <div>
       <div class="sec-title">Need a gentle reminder? 🌸</div>
       <div class="reason" id="reason">Tap the button to see why you’re so special to me.</div>
       <button class="btn soft" id="reasonBtn">Tap for a reason ✨</button>
       <div class="counter" id="counter"></div>
     </div>
- 
+
     <div class="forgive">
       <div class="ask">Can we make up and reset, my love? 🥺</div>
       <div class="ask-sub">choose wisely… 😌</div>
@@ -207,21 +207,21 @@
     </div>
   </section>
 </main>
- 
+
 <!-- Win -->
 <div id="win">
   <div class="win-card">
     <div class="big">🎉🥰✨</div>
-    <h2>Thank you, my Rutu!</h2>
+    <h2>91225, my Rutu!</h2>
     <p>You have no idea how much this means to me. I promise to handle your heart with extra care, and make it up to you today. 🫶</p>
     <button class="btn" id="closeBtn">Close &amp; hug me 🫂</button>
   </div>
 </div>
- 
+
 <script>
 (() => {
   const $ = id => document.getElementById(id);
- 
+
   /* ---- floating background hearts ---- */
   const fx = $('fx'), sym = ['❤️','💖','🌸','💕','✨','💗'];
   const count = innerWidth < 600 ? 16 : 26;
@@ -237,7 +237,7 @@
     h.style.setProperty('--rot', (Math.random()*360 - 180) + 'deg');
     fx.appendChild(h);
   }
- 
+
   /* ---- envelope intro ---- */
   const env = $('env'), intro = $('intro'), card = $('card'), letter = $('letter');
   let opened = false;
@@ -251,7 +251,7 @@
       setTimeout(() => letter.classList.add('read'), 500);
     }, 1100);
   });
- 
+
   /* ---- reasons ---- */
   const reasons = [
     "Your smile literally lights up my darkest days.",
@@ -272,18 +272,18 @@
       ri = (ri + 1) % reasons.length;
     }, 220);
   });
- 
+
   /* ---- the runaway "Nope" button ---- */
   const no = $('noBtn'), yes = $('yesBtn'), slot = $('noSlot'), toast = $('toast');
   const labels = [
     "Nope, abhi bhi gussa hu 😤",
-    "Pakad ke dikha 😝",
-    "Arre! Itna aasaan nahi 🙈",
-    "Hehe miss! 😜",
-    "Thoda aur gussa hu 😤",
-    "Okay okay… almost 🥺",
-    "Button thak gaya 😮‍💨",
-    "Bas karo na 🥹"
+    "Bas karo na 🥹",
+    "Jaane bhi do na 🥺",
+    "I am your cutu na 🐻",
+    "Your lovely baby hu na 🍼💕",
+    "Maaf kar do na pleaseee 🙏",
+    "Itna gussa sehat ke liye acha nahi 😝",
+    "Chalo ab haan bol do na 🫶"
   ];
   const toasts = [
     "", "Aww, you can’t catch it 😆", "The Yes button is getting bigger 👀",
@@ -291,7 +291,7 @@
     "I’ll give you chocolates 🍫", "Okay now you’re just playing 😂"
   ];
   let dodges = 0, running = false;
- 
+
   function dodge(e) {
     if (e) { e.preventDefault(); }
     if (!running) {
@@ -305,12 +305,12 @@
     dodges++;
     no.textContent = labels[dodges % labels.length];
     toast.textContent = toasts[Math.min(dodges, toasts.length) % toasts.length];
- 
+
     // make "Yes" bigger every time (capped)
     const s = Math.min(1 + dodges * 0.06, 1.35);
     yes.style.transform = 'scale(' + s + ')';
     if (navigator.vibrate) navigator.vibrate(12);
- 
+
     // pick a new spot that is inside the screen and away from the current one
     const pad = 12, bw = no.offsetWidth, bh = no.offsetHeight;
     const maxX = innerWidth - bw - pad, maxY = innerHeight - bh - pad - 8;
@@ -335,7 +335,7 @@
     no.style.left = Math.min(r.left, innerWidth - r.width - 12) + 'px';
     no.style.top = Math.min(r.top, innerHeight - r.height - 12) + 'px';
   });
- 
+
   /* ---- yes -> celebration + confetti ---- */
   yes.addEventListener('click', () => {
     $('win').classList.add('on');
@@ -343,7 +343,7 @@
     confetti();
   });
   $('closeBtn').addEventListener('click', () => $('win').classList.remove('on'));
- 
+
   function confetti() {
     const cv = $('confetti'), ctx = cv.getContext('2d');
     const dpr = Math.min(devicePixelRatio || 1, 2);
